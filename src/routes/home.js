@@ -82,8 +82,10 @@ export default class Home extends Component {
 				</div>
 				<div class="text-center w-full">
 					<p class="mb-5">
-						Developed with ❤️ by
-						<a class="text-orange-500" href={process.env.PREACT_APP_DEV_LINK}>{process.env.PREACT_APP_DEV_NAME}</a>
+						Developed with ❤️ by <a class="text-orange-500" href={process.env.PREACT_APP_DEV_LINK}>{process.env.PREACT_APP_DEV_NAME}</a>
+					</p>
+					<p class="mb-5">
+						Progetto originale di <a class="text-orange-500" href={process.env.PREACT_APP_CREATOR_LINK}>{process.env.PREACT_APP_CREATOR_NAME}</a>
 					</p>
 					<a href="https://github.com/tomma5o/domicilioBoilerplate"
 						target="_blank"
