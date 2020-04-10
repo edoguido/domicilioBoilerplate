@@ -1,33 +1,61 @@
 import { useState, useContext } from "preact/hooks";
-import { whatsappIcon } from "../assets/icons/whatsappIcon";
 
 // Actions
 import { Action } from "../index";
 
-export const ListItem = ({ name, tel, site, mail, note, whatsapp }) => {
+// Resources
+import { whatsappIcon } from "../assets/icons/whatsappIcon";
+
+export const ListItem = ({
+   name,
+   tel,
+   whatsapp,
+   site,
+   mail,
+   city,
+   free_delivery,
+   note,
+}) => {
    const [infoVisible, setInfoVisible] = useState(false);
    const action = useContext(Action);
    const encodedName = encodeURIComponent(name);
    const encodedCity = encodeURIComponent(process.env.PREACT_APP_CITY);
    const searchUrl = `https://www.google.com/search?q=${encodedName}%20${encodedCity}`;
+   const telNumbers =
+      tel !== "" && tel !== null && tel !== undefined ? tel.split(",") : false;
 
    function handleClick() {
       setInfoVisible(!infoVisible);
    }
 
    return (
-      <div class="rounded-lg border bg-gray-200 p-4 md:p-5 my-5 text-md lg:text-xl font-semibold text-gray-700">
+      <div class="rounded-lg border bg-gray-200 p-4 md:p-5 my-5 text-md lg:text-xl text-gray-700">
          <div class="flex justify-between items-center">
-            <span>
+            <div class="flex flex-col">
+               <div class="text-sm capitalize">
+                  <span>📍 </span>
+                  <a
+                     class="hover:underline"
+                     href={searchUrl}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                  >
+                     {city}
+                  </a>
+               </div>
                <a
-                  class="hover:underline"
+                  class="hover:underline font-semibold mt-1"
                   href={searchUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                >
                   {name}
                </a>
-            </span>
+               {free_delivery === "true" && (
+                  <p class="text-sm text-green-600">Consegna gratuita</p>
+               )}
+               {free_delivery === "if" && <p class="text-sm">{note}</p>}
+            </div>
             <div class="flex">
                {note && (
                   <span
@@ -63,10 +91,12 @@ export const ListItem = ({ name, tel, site, mail, note, whatsapp }) => {
                )}
                {tel && (
                   <a
-                     href={`tel:+39${tel}`}
-                     //  onClick={(e) =>
-                     //     Array.isArray(tel) && action.setPopupNumbers(e, tel)
-                     //  }
+                     href={`tel:+39${telNumbers}`}
+                     onClick={(e) =>
+                        Array.isArray(telNumbers) &&
+                        telNumbers.length > 1 &&
+                        action.setPopupNumbers(e, telNumbers)
+                     }
                   >
                      <span
                         class="inline-block mx-2 w-8 h-8 bg-green-300 text-center leading-8 rounded-lg cursor-pointer"

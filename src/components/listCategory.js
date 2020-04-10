@@ -8,7 +8,7 @@ export const ListCategory = ({ name = "", category = {} }) => {
          </p>
          <div>
             {category.data.map((props) => (
-               <ListItem key={props.tel} {...props} />
+               <ListItem key={`${props.tel}-${props.name}`} {...props} />
             ))}
          </div>
       </div>
