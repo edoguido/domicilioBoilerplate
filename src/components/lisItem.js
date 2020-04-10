@@ -52,12 +52,16 @@ export const ListItem = ({
                   {name}
                </a>
                {free_delivery === "true" && (
-                  <p class="text-sm text-green-600">Consegna gratuita</p>
+                  <p class="text-green-600 text-sm md:text-md ">
+                     Consegna gratuita
+                  </p>
                )}
-               {free_delivery === "if" && <p class="text-sm">{note}</p>}
+               {free_delivery === "if" && (
+                  <p class="text-yellow-700 text-sm md:text-md ">{note}</p>
+               )}
             </div>
             <div class="flex">
-               {note && (
+               {/* {note && (
                   <span
                      onClick={handleClick}
                      class="inline-block mx-1 md:mx-2 w-8 h-8 cursor-pointer text-center leading-8 bg-yellow-300 rounded-lg"
@@ -66,7 +70,7 @@ export const ListItem = ({
                   >
                      ⚠️
                   </span>
-               )}
+               )} */}
                {site && (
                   <a href={`${site}`}>
                      <span
@@ -120,13 +124,13 @@ export const ListItem = ({
                )}
             </div>
          </div>
-         {infoVisible && (
+         {/* {infoVisible && (
             <div class="block mt-4">
                <p class="text-yellow-700 text-sm md:text-md lg:text-lg">
                   {note}
                </p>
             </div>
-         )}
+         )} */}
       </div>
    );
 };
