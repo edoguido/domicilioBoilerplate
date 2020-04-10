@@ -84,7 +84,7 @@ export default class Home extends Component {
             </div>
             <div class="text-center w-full">
                <p class="mb-1">
-                  Developed with ♥️ by{" "}
+                  Developed with ❤️ by{" "}
                   <a
                      class="text-orange-500"
                      href={process.env.PREACT_APP_DEV_LINK}
@@ -97,9 +97,9 @@ export default class Home extends Component {
                   Raccolta dati a cura dei{" "}
                   <a
                      class="text-orange-500"
-                     href="https://www.facebook.com/GDMonzaBrianza"
+                     href="https://www.facebook.com/GDMonzaVillasanta"
                      target="_blank"
-                     noref
+                     rel="external nofollow noopener noreferrer"
                   >
                      Giovani Democratici di Monza
                   </a>
@@ -110,15 +110,15 @@ export default class Home extends Component {
                      class="text-orange-500"
                      href={process.env.PREACT_APP_CREATOR_LINK}
                      target="_blank"
-                     noref
+                     rel="external nofollow noopener noreferrer"
                   >
                      {process.env.PREACT_APP_CREATOR_NAME}
                   </a>
                </p>
                <a
-                  href="https://github.com/tomma5o/domicilioBoilerplate"
+                  href={process.env.PREACT_APP_ORIGINAL_REPO}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="external nofollow noopener noreferrer"
                   class="mb-5 text-xs block text-gray-500 hover:underline"
                >
                   Vuoi crearlo per la tua città? Clicca qui per visitare la
