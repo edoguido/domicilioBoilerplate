@@ -1,5 +1,5 @@
 import { useState, useContext } from "preact/hooks";
-import { whatsappIcon } from "../assets/";
+import { whatsappIcon } from "../assets/icons/whatsappIcon";
 
 // Actions
 import { Action } from "../index";
