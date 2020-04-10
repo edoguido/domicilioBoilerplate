@@ -84,7 +84,7 @@ export default class Home extends Component {
             </div>
             <div class="text-center w-full">
                <p class="mb-1">
-                  Developed with ❤️ by{" "}
+                  Developed with ♥️ by{" "}
                   <a
                      class="text-orange-500"
                      href={process.env.PREACT_APP_DEV_LINK}
@@ -94,7 +94,7 @@ export default class Home extends Component {
                   </a>
                </p>
                <p class="mb-5">
-                  Con la collaborazione dei{" "}
+                  Raccolta dati a cura dei{" "}
                   <a
                      class="text-orange-500"
                      href="https://www.facebook.com/GDMonzaBrianza"
