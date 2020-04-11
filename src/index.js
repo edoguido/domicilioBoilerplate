@@ -15,6 +15,10 @@ import { PWAPrompt } from "./components/pwaPrompt";
 
 export const Action = createContext({});
 
+const capitalizedCityName =
+   process.env.PREACT_APP_CITY.charAt(0).toUpperCase() +
+   process.env.PREACT_APP_CITY.slice(1);
+
 export default class App extends Component {
    state = {
       results: {},
@@ -78,14 +82,14 @@ export default class App extends Component {
                      </Link>
                   ) : (
                      <Link
-                        class="m-5 text-blue-500 hover:text-blue-800"
+                        class="m-6 text-blue-500 hover:text-blue-800"
                         href="/"
                      >
                         Ritorna alla ricerca
                      </Link>
                   )}
                </nav>
-               <h1 class="font-sans text-4xl md:text-5xl lg:text-6xl pt-10 text-gray-800 text-center capitalize">
+               <h1 class="font-sans text-4xl md:text-5xl lg:text-6xl pt-10 text-gray-800 text-center">
                   <span
                      class="block sm:inline-block"
                      role="img"
@@ -93,8 +97,13 @@ export default class App extends Component {
                   >
                      🚴
                   </span>
-                  {`${process.env.PREACT_APP_CITY} a Domicilio`}
+                  {` ${capitalizedCityName} a Domicilio`}
                </h1>
+               <p class="max-w-lg mx-auto font-sans text-sm md:text-base lg:text-l pt-4 pb-6 text-gray-800 text-center">
+                  Il sito completamente gratuito che ti permette di avere i
+                  servizi con consegna a domicilio di {capitalizedCityName} e
+                  dintorni sempre a portata di mano!
+               </p>
                <Router onChange={this.handleRoute}>
                   <Home path="/" results={results} />
                   <Form path="/form" />
