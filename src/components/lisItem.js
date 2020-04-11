@@ -65,16 +65,6 @@ export const ListItem = ({
                )}
             </div>
             <div class="flex">
-               {delivery_notes && (
-                  <span
-                     onClick={handleClick}
-                     class="inline-block mx-1 md:mx-2 w-8 h-8 cursor-pointer text-center leading-8 bg-yellow-300 rounded-lg"
-                     role="img"
-                     aria-label="warning"
-                  >
-                     🗒
-                  </span>
-               )}
                {site && (
                   <a href={`${site}`} target="_blank" rel="noopener noreferrer">
                      <span
