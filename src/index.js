@@ -100,9 +100,9 @@ export default class App extends Component {
                   {` ${capitalizedCityName} a Domicilio`}
                </h1>
                <p class="max-w-lg mx-auto font-sans text-sm md:text-base lg:text-l pt-4 pb-6 text-gray-800 text-center">
-                  Il sito completamente gratuito che ti permette di avere i
-                  servizi con consegna a domicilio di {capitalizedCityName} e
-                  dintorni sempre a portata di mano!
+                  Il sito completamente gratuito che ti permette di avere sempre
+                  a portata di mano i servizi con consegna a domicilio di{" "}
+                  {capitalizedCityName} e dintorni!
                </p>
                <Router onChange={this.handleRoute}>
                   <Home path="/" results={results} />
