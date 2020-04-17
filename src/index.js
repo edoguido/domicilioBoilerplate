@@ -3,11 +3,12 @@ import { Router } from "preact-router";
 import { Link } from "preact-router/match";
 
 import "tailwindcss/dist/tailwind.min.css";
-import "./assets/styles/global.css";
+import './assets/styles/global.css';
 
 // Routes
-import Home from "./routes/home.js";
-import Form from "./routes/form.js";
+import Home from './routes/home.js';
+import Form from './routes/form.js';
+import FormSuccess from './routes/formSuccess';
 
 // Components
 import { Dialog } from "./components/dialog.js";
@@ -47,19 +48,16 @@ export default class App extends Component {
       }
    };
 
-   componentDidMount() {
-      fetch(`${process.env.PREACT_APP_DATA_SOURCE}`)
-         .then((r) => r.json())
-         .then((json) => {
-            this.setState({
-               results: json,
-               resultBkp: json,
-            });
-         });
-   }
-
-   componentDidUpdate() {
-      const { isPopupOpen } = this.state;
+	componentDidMount() {
+		fetch(`${process.env.PREACT_APP_DATA_SOURCE}?c=${Math.random().toString(36).split('.')[1]}`)
+			.then(r => r.json())
+			.then(json => {
+				this.setState({
+					results: json,
+					resultBkp: json
+				});
+			});
+	}
 
       const root = document.documentElement;
       root.style.setProperty(
@@ -68,11 +66,11 @@ export default class App extends Component {
       );
    }
 
-   render(props, { isHomepage, results, popupNumbers, isPopupOpen }) {
-      return (
-         <Action.Provider value={{ setPopupNumbers: this.setPopupNumbers }}>
-            <div id="app" class="px-5 max-w-screen-md mx-auto">
-               <nav class="flex justify-center md:justify-end items-center">
+	render(props, { isHomepage, results, popupNumbers, isPopupOpen }) {
+		return (
+			<Action.Provider value={{setPopupNumbers: this.setPopupNumbers}}>
+				<div id="app" class="px-5 max-w-screen-md mx-auto">
+					<nav class="flex justify-center md:justify-end items-center">
                   {isHomepage ? (
                      <Link
                         class="m-5 bg-blue-500 inline-block hover:bg-blue-700 text-white font-bold px-2 py-1 rounded"
@@ -104,18 +102,15 @@ export default class App extends Component {
                   a portata di mano i servizi con consegna a domicilio di{" "}
                   {capitalizedCityName} e dintorni!
                </p>
-               <Router onChange={this.handleRoute}>
-                  <Home path="/" results={results} />
-                  <Form path="/form" />
-               </Router>
-            </div>
-            <Dialog
-               isOpen={isPopupOpen}
-               closePopup={this.closePopup}
-               telNumbers={popupNumbers}
-            />
-            <PWAPrompt />
-         </Action.Provider>
-      );
-   }
+					<Router onChange={this.handleRoute}>
+						<Home path="/" results={results} />
+						<Form path="/form" />
+						<FormSuccess path="/form/success" />
+					</Router>
+				</div>
+				<Dialog isOpen={isPopupOpen} closePopup={this.closePopup} telNumbers={popupNumbers} />
+				<PWAPrompt />
+			</Action.Provider>
+		);
+	}
 }
