@@ -97,7 +97,7 @@ export default class Home extends Component {
                   Raccolta dati a cura dei{" "}
                   <a
                      class="text-orange-500"
-                     href="https://www.instagram.com/giovanidemocraticimonza/"
+                     href="https://www.instagram.com/gd.spazio101/"
                      target="_blank"
                      rel="external nofollow noopener noreferrer"
                   >
