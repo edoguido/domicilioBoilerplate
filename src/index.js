@@ -8,6 +8,7 @@ import "./assets/styles/global.css";
 // Routes
 import Home from "./routes/home.js";
 import Form from "./routes/form.js";
+import FormSuccess from "./routes/formSuccess";
 
 // Components
 import { Dialog } from "./components/dialog.js";
@@ -48,7 +49,11 @@ export default class App extends Component {
    };
 
    componentDidMount() {
-      fetch(`${process.env.PREACT_APP_DATA_SOURCE}`)
+      fetch(
+         `${process.env.PREACT_APP_DATA_SOURCE}?c=${
+            Math.random().toString(36).split(".")[1]
+         }`
+      )
          .then((r) => r.json())
          .then((json) => {
             this.setState({
@@ -58,15 +63,12 @@ export default class App extends Component {
          });
    }
 
-   componentDidUpdate() {
-      const { isPopupOpen } = this.state;
-
-      const root = document.documentElement;
-      root.style.setProperty(
-         "--popup-visible",
-         isPopupOpen ? "hidden" : "initial"
-      );
-   }
+   //    const root = document.documentElement;
+   //    root.style.setProperty(
+   //       "--popup-visible",
+   //       isPopupOpen ? "hidden" : "initial"
+   //    );
+   // }
 
    render(props, { isHomepage, results, popupNumbers, isPopupOpen }) {
       return (
@@ -89,7 +91,7 @@ export default class App extends Component {
                      </Link>
                   )}
                </nav>
-               <h1 class="font-sans text-4xl md:text-5xl lg:text-6xl pt-10 text-gray-800 text-center">
+               <h1 class="font-sans text-4xl md:text-5xl lg:text-6xl pt-10 text-center">
                   <span
                      class="block sm:inline-block"
                      role="img"
@@ -99,7 +101,7 @@ export default class App extends Component {
                   </span>
                   {` ${capitalizedCityName} a Domicilio`}
                </h1>
-               <p class="max-w-lg mx-auto font-sans text-sm md:text-base lg:text-l pt-4 pb-6 text-gray-800 text-center">
+               <p class="max-w-lg mx-auto font-sans text-sm md:text-base lg:text-l pt-4 pb-6 text-center">
                   Il sito completamente gratuito che ti permette di avere sempre
                   a portata di mano i servizi con consegna a domicilio di{" "}
                   {capitalizedCityName} e dintorni!
@@ -107,6 +109,7 @@ export default class App extends Component {
                <Router onChange={this.handleRoute}>
                   <Home path="/" results={results} />
                   <Form path="/form" />
+                  <FormSuccess path="/form/success" />
                </Router>
             </div>
             <Dialog

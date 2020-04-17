@@ -71,7 +71,7 @@ export default class Home extends Component {
                   );
                })}
             </div>
-            <div class="relative mb-10 font-sans text-md text-gray-800">
+            <div class="relative mb-10 font-sans text-md">
                {Object.keys(filteredStores)
                   .filter((key) => filteredStores[key].data.length)
                   .map((key) => (
@@ -119,7 +119,7 @@ export default class Home extends Component {
                   href={process.env.PREACT_APP_ORIGINAL_REPO}
                   target="_blank"
                   rel="external nofollow noopener noreferrer"
-                  class="mb-5 text-xs block text-gray-500 hover:underline"
+                  class="mb-5 text-xs block hover:underline"
                >
                   Vuoi crearlo per la tua città? Clicca qui per visitare la
                   pagina GitHub del progetto!
