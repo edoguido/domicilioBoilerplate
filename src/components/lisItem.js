@@ -31,7 +31,7 @@ export const ListItem = ({
    }
 
    return (
-      <div class="rounded-lg border bg-gray-200 p-4 md:p-5 my-5 text-md lg:text-xl text-gray-700">
+      <div class="rounded-lg border border-gray-500 bg-gray-200 p-4 md:p-5 my-5 text-md lg:text-xl">
          <div class="flex justify-between items-center">
             <div class="flex flex-col">
                <div class="text-sm capitalize">
