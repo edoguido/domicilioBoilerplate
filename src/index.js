@@ -28,19 +28,26 @@ export default class App extends Component {
       popupNumbers: [],
    };
 
-   handleRoute = (e) => {
-      this.currentUrl = e.url;
-      this.setState({ isHomepage: e.url.replace(/\?.*/g, "") === "/" });
-   };
+	state = {
+		results: {},
+		isHomepage: true,
+		isPopupOpen: false,
+		popupData: {},
+	}
+	
+	handleRoute = e => {
+		this.currentUrl = e.url;
+		this.setState({ isHomepage: e.url.replace(/\?.*/g, "") === "/" });
+	};
 
-   setPopupNumbers = (e, numberArray) => {
-      e.preventDefault();
+	setPopupNumbers = (e, popupData) => {
+		e.preventDefault();
 
-      this.setState({
-         popupNumbers: numberArray,
-         isPopupOpen: true,
-      });
-   };
+		this.setState({
+			popupData,
+			isPopupOpen: true
+		})
+	}
 
    closePopup = (e) => {
       if (e.currentTarget === e.target) {
