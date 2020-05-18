@@ -6,16 +6,19 @@ import { Action } from "../index";
 // Resources
 import { whatsappIcon } from "../assets/icons/whatsappIcon";
 export const ListItem = ({
-   name,
-   tel,
-   whatsapp,
-   mail,
-   site,
-   city,
-   free_delivery,
-   delivery_notes,
-   opening_hours,
-   note,
+	name,
+	tel,
+	whatsapp,
+	mail,
+	site,
+	payments,
+	services,
+	newEntry,
+	city,
+	free_delivery,
+	delivery_notes,
+	opening_hours,
+	note,
 }) => {
 	const action = useContext(Action);
 	const encodedName = encodeURIComponent(name);
@@ -31,7 +34,7 @@ export const ListItem = ({
 					<a class="hover:underline" href={searchUrl} target="_blank" rel="noopener noreferrer">{name}</a>
 				</span>
 				<div class="flex">
-					{isInfoVisible && 
+					{isInfoVisible &&
 						<span
 							onClick={(e) => action.setPopupNumbers(e, props)}
 							class="inline-block mx-1 md:mx-2 w-8 h-8 cursor-pointer text-center leading-8 bg-blue-300 rounded-lg"
@@ -48,7 +51,7 @@ export const ListItem = ({
 								role="img"
 								aria-label="mail"
 							>
-							✉️
+								✉️
 							</span>
 						</a>
 					)}
@@ -59,7 +62,7 @@ export const ListItem = ({
 								role="img"
 								aria-label="website"
 							>
-							🌐
+								🌐
 							</span>
 						</a>
 					)}
@@ -70,34 +73,34 @@ export const ListItem = ({
 								role="img"
 								aria-label="telephone"
 							>
-							📞
+								📞
 							</span>
 						</a>
 					)}
 
-               {whatsapp && (
-                  <a href={`https://wa.me/39${whatsapp}`}>
-                     <span
-                        class="inline-block mx-2 w-8 h-8 bg-green-500 text-center leading-8 rounded-lg cursor-pointer"
-                        role="img"
-                        aria-label="whatsapp"
-                     >
-                        <img src={whatsappIcon} />
-                     </span>
-                  </a>
-               )}
-               {note && (
-                  <span
-                     onClick={handleClick}
-                     class="inline-block mx-1 md:mx-2 w-8 h-8 cursor-pointer text-center leading-8 bg-yellow-300 rounded-lg"
-                     role="img"
-                     aria-label="warning"
-                  >
-                     ⚠️
-                  </span>
-               )}
+					{whatsapp && (
+						<a href={`https://wa.me/39${whatsapp}`}>
+							<span
+								class="inline-block mx-2 w-8 h-8 bg-green-500 text-center leading-8 rounded-lg cursor-pointer"
+								role="img"
+								aria-label="whatsapp"
+							>
+								<img src={whatsappIcon} />
+							</span>
+						</a>
+					)}
+					{note && (
+						<span
+							onClick={(e) => Array.isArray(tel) && action.setPopupNumbers(e, props)}
+							class="inline-block mx-1 md:mx-2 w-8 h-8 cursor-pointer text-center leading-8 bg-yellow-300 rounded-lg"
+							role="img"
+							aria-label="warning"
+						>
+							⚠️
+						</span>
+					)}
 				</div>
 			</div>
-    </article>
+		</article>
 	);
 };
